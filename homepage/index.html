@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>BookBase</title>
+</head>
+
+<body>
+    <div class="container">
+        <ul>
+            <i class="fa-solid fa-xmark"></i>
+            <li>
+                <a href="./">Home</a>
+            </li>
+            <li>
+                <a href="../books/books.html">All Books</a>
+            </li>
+            <li>
+                <a href="../userprofile/profile.html">My Books</a>
+            </li>
+            <li>
+                <a href="#">Logout</a>
+            </li>
+        </ul>
+        <section class="sidebar">
+            <h1><i class="fa-solid fa-book"></i>BookBase</h1>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-house"></i>
+                    <a href="./">Home</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-swatchbook"></i>
+                    <a href="../books/books.html">All Books</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-book-open"></i>
+                    <a href="../userprofile/profile.html">My Books</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </section>
+        <section class="home">
+            <header>
+                <i class="fa-solid fa-bars"></i>
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search Your Favourite Books ..." id="searchInput">
+                </div>
+                <div>
+                    <!-- if Logged In -->
+                    <a href="../userprofile/profile.html">
+                        <img src="../images/blue-circle-with-white-user_78370-4707.avif" alt="profile" width="40px"
+                            height="40px">
+                    </a>
+                    <!-- if not -->
+                    <!-- <a href="../login/login.html" class="login">
+                        Login
+                    </a> -->
+                </div>
+            </header>
+            <section>
+                <div class="recommended">
+                    <div class="heading">
+                        <span>Recommended</span>
+                        <a href="../books/books.html">See All <i class="fa-solid fa-angles-right"></i> </a>
+                    </div>
+                    <div class="books">
+                        <!-- random 4 books , make the src , title and p dynamic-->
+                        <div class="book">
+                            <img src="../images/book-1.jpg" alt="" class="book-image">
+                            <h3>Title 1</h3>
+                            <p>Author 1</p>
+                        </div>
+                        <div class="book">
+                            <img src="../images/book-2.jpg" alt="" class="book-image">
+                            <h3>Title 2</h3>
+                            <p>Author 2</p>
+                        </div>
+                        <div class="book">
+                            <img src="../images/book-3.jpg" alt="" class="book-image">
+                            <h3>Title 3</h3>
+                            <p>Author 3</p>
+                        </div>
+                        <div class="book">
+                            <img src="../images/book-4.jpg" alt="" class="book-image">
+                            <h3>Title 4</h3>
+                            <p>Author 4</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="categories">
+                    <div class="heading">
+                        <span>Categories</span>
+                        <a href="../books/books.html">See All <i class="fa-solid fa-angles-right"></i> </a>
+                    </div>
+                    <div class="books">
+                        <!-- random 4 books , make the src , title and p dynamic-->
+                        <div class="book">
+                            <img src="../images/book-5.jpg" alt="" class="book-image">
+                            <h3>Title 5</h3>
+                            <p>Author 5</p>
+                        </div>
+                        <div class="book">
+                            <img src="../images/book-6.jpg" alt="" class="book-image">
+                            <h3>Title 6</h3>
+                            <p>Author 6</p>
+                        </div>
+                        <div class="book">
+                            <img src="../images/book-7.jpg" alt="" class="book-image">
+                            <h3>Title 7</h3>
+                            <p>Author 7</p>
+                        </div>
+                        <div class="book">
+                            <img src="../images/book-8.jpg" alt="" class="book-image">
+                            <h3>Title 8</h3>
+                            <p>Author 8</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="book-details">
+                <i class="fa-solid fa-xmark"></i>
+                <img src="../images/book-8.jpg" alt="">
+                <div>
+                    <h3>Title</h3>
+                    <p>Author</p>
+                </div>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet veritatis molestiae, quae
+                    perferendis debitis ab tenetur, possimus reprehenderit repellat, soluta molestias corporis illum
+                    vero! Corrupti ratione fuga natus ex labore?
+                </p>
+                <button>
+                    Rent
+                    <i class="fa-solid fa-bookmark"></i>
+                </button>
+            </div>
+        </section>
+    </div>
+    <script src="https://kit.fontawesome.com/17218a83e4.js" crossorigin="anonymous"></script>
+    <script src="./script.js"> </script>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const books = document.querySelectorAll('.book');
+
+        searchInput.addEventListener('input', () => {
+            const value = searchInput.value.toLowerCase();
+            books.forEach(book => {
+                const title = book.querySelector('h3').textContent.toLowerCase();
+                book.style.display = title.includes(value) ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./books.css">
+    <title>Books Collection</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <a href="../homepage/index.html">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <h1><i class="fa-solid fa-book" style="color: #0f52f2; margin-right: 5px;"></i>BookBase</h1>
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search Your Favourite Books ..." id="searchInput">
+        </div>
+        <div class="section">
+            <h2>Books Collection</h2>
+            <h3>Recently Added</h3>
+            <div class="book-list">
+                <div class="book-card">
+                    <img src="../images/book-1.jpg" alt="" class="book-image">
+                    <div class="book-title">The Silent Patient</div>
+                    <div class="book-author">Alex Michaelides</div>
+                    <div class="book-category">Psychological Thriller</div>
+                </div>
+                <div class="book-card">
+                    <img src="../images/book-2.jpg" alt="" class="book-image">
+                    <div class="book-title">Educated</div>
+                    <div class="book-author">Tara Westover</div>
+                    <div class="book-category">Memoir</div>
+                </div>
+                <div class="book-card">
+                    <img src="../images/book-3.jpg" alt="" class="book-image">
+                    <div class="book-title">Atomic Habits</div>
+                    <div class="book-author">James Clear</div>
+                    <div class="book-category">Self-Help</div>
+                </div>
+                <div class="book-card">
+                    <img src="../images/book-4.jpg" alt="" class="book-image">
+                    <div class="book-title">Where the Crawdads Sing</div>
+                    <div class="book-author">Delia Owens</div>
+                    <div class="book-category">Fiction</div>
+                </div>
+            </div>
+            <div class="see-all">
+                <a href="#">See All &gt;&gt;</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Most Popular</h3>
+            <div class="book-list">
+                <div class="book-card">
+                    <img src="../images/book-5.jpg" alt="" class="book-image">
+                    <div class="book-title">To Kill a Mockingbird</div>
+                    <div class="book-author">Harper Lee</div>
+                    <div class="book-category">Classic</div>
+                </div>
+                <div class="book-card">
+                    <img src="../images/book-6.jpg" alt="" class="book-image">
+                    <div class="book-title">1984</div>
+                    <div class="book-author">George Orwell</div>
+                    <div class="book-category">Dystopian</div>
+                </div>
+                <div class="book-card">
+                    <img src="../images/book-7.jpg" alt="" class="book-image">
+                    <div class="book-title">The Great Gatsby</div>
+                    <div class="book-author">F. Scott Fitzgerald</div>
+                    <div class="book-category">Classic</div>
+                </div>
+                <div class="book-card">
+                    <img src="../images/book-8.jpg" alt="" class="book-image">
+                    <div class="book-title">Pride and Prejudice</div>
+                    <div class="book-author">Jane Austen</div>
+                    <div class="book-category">Romance</div>
+                </div>
+            </div>
+            <div class="see-all">
+                <a href="#">See All &gt;&gt;</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Categories</h3>
+            <div class="categories">
+                <div class="category">
+                    <div class="category-title">History</div>
+                    <div class="category-quote">"A short history of nearly everything"</div>
+                </div>
+                <div class="category">
+                    <div class="category-title">Science</div>
+                    <div class="category-quote">"The big fat notebook series"</div>
+                </div>
+                <div class="category">
+                    <div class="category-title">Biography</div>
+                    <div class="category-quote">"Southern Baptist Church"</div>
+                </div>
+                <div class="category">
+                    <div class="category-title">Literature</div>
+                    <div class="category-quote">"Billy Brown"</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-overlay" id="bookPopup">
+        <div class="book-popup">
+            <span class="popup-close" onclick="closeBookPopup()">&times;</span>
+            <div class="popup-header">
+                <div class="popup-category" id="popupCategory">Category</div>
+                <div class="popup-title" id="popupTitle">Book Title</div>
+                <div class="popup-author" id="popupAuthor">Author Name</div>
+                <div class="popup-meta">
+                    <span id="popupYear">Year</span>
+                    <span id="popupPages">Pages</span>
+                    <span id="popupRating">Rating</span>
+                </div>
+            </div>
+            <img src="https://via.placeholder.com/150x200" alt="Book Cover" class="popup-cover" id="popupCover">
+            <div class="popup-description" id="popupDescription">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis esse quis voluptas natus numquam
+                mollitia magnam. Accusantium ex sapiente quis error ab, praesentium necessitatibus expedita consectetur
+                repellendus cupiditate perferendis quaerat?
+            </div>
+            <div class="popup-actions">
+                <button class="popup-btn btn-primary">Rent</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/17218a83e4.js" crossorigin="anonymous"></script>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const books = document.querySelectorAll('.book-card');
+        searchInput.addEventListener('input', () => {
+            const value = searchInput.value.toLowerCase();
+            books.forEach(book => {
+                const title = book.querySelector('.book-title').textContent.toLowerCase();
+                book.style.display = title.includes(value) ? 'block' : 'none';
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("click", (e) => {
+            if (e.target.classList.contains("book-card")) {
+                const popup = document.getElementById('bookPopup');
+                const cover = document.getElementById('popupCover');
+                cover.src = e.target.children[0].src;
+                document.getElementById('popupTitle').textContent = e.target.children[1].textContent;
+                document.getElementById('popupAuthor').textContent = e.target.children[2].textContent;
+                document.getElementById('popupCategory').textContent = e.target.children[3].textContent;
+                document.getElementById('popupYear').textContent = Math.floor(Math.random() * (2020 - 1970 + 1)) + 1970;
+                document.getElementById('popupPages').textContent = Math.floor(Math.random() * (1000 - 200 + 1)) + 200;
+                document.getElementById('popupRating').textContent = `${Math.floor(Math.random() * (5 - 1 + 1)) + 1} / 5`;
+                popup.classList.add('active');
+            } else if (e.target.classList.contains("book-image")) {
+                const popup = document.getElementById('bookPopup');
+                const cover = document.getElementById('popupCover');
+                cover.src = e.target.parentElement.children[0].src;
+                document.getElementById('popupTitle').textContent = e.target.parentElement.children[1].textContent;
+                document.getElementById('popupAuthor').textContent = e.target.parentElement.children[2].textContent;
+                document.getElementById('popupCategory').textContent = e.target.parentElement.children[3].textContent;
+                document.getElementById('popupYear').textContent = Math.floor(Math.random() * (2020 - 1970 + 1)) + 1970;
+                document.getElementById('popupPages').textContent = Math.floor(Math.random() * (1000 - 200 + 1)) + 200;
+                document.getElementById('popupRating').textContent = `${Math.floor(Math.random() * (5 - 1 + 1)) + 1} / 5`;
+                popup.classList.add('active');
+            }
+        })
+        function closeBookPopup() {
+            document.getElementById('bookPopup').classList.remove('active');
+        }
+        document.getElementById('bookPopup').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeBookPopup();
+            }
+        });
+    </script>
+</body>
+
+</html>
